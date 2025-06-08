@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personal Profile Page</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="grid-container">
+    
+    <!-- Part 1: Profile Table -->
+    <section class="profile-section">
+      <h2>About Me</h2>
+      <table class="profile-table">
+        <caption>Personal Information</caption>
+        <thead>
+          <tr>
+            <th colspan="2">Profile Summary</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Name</td>
+            <td>Timothy J. Neeb</td>
+          </tr>
+          <tr>
+            <td>Photo</td>
+            <td><img src="profile.jpg" alt="Timothy Neeb" class="profile-pic" /></td>
+          </tr>
+          <tr>
+            <td>Birthday</td>
+            <td>December 24th, 2002</td>
+          </tr>
+          <tr>
+            <td>Favorite Color</td>
+            <td style="background-color: #6a5acd; color: white;">Slate Blue</td>
+          </tr>
+          <tr>
+            <td>Favorite Quote</td>
+            <td>“You are what you repeatedly do, excellence then is not an act but a habit” – Aristotle</td>
+          </tr>
+          <tr>
+            <td>Favorite Food</td>
+            <td>Anything Chocolate</td>
+          </tr>
+          <tr>
+            <td>Favorite Movie</td>
+            <td>Inception</td>
+          </tr>
+          <tr>
+            <td>Favorite Sport</td>
+            <td>Grew up playing Soccer and Wrestling. <br>
+              I recently picked up golf
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="2">Contact for more info!</td>
+          </tr>
+        </tfoot>
+      </table>
+    </section>
+
+    <!-- Part 2: Media Gallery -->
+    <section class="media-section">
+      <h2>Media Gallery</h2>
+      <div class="media-flex">
+        <div class="media-item">
+          <img src="Snapchat-221747091~3.jpg" alt="Profile Again" />
+          <p>Profile Picture</p>
+        </div>
+        <div class="media-item">
+          <iframe width="300" height="350" src="golf.mp4" 
+            title="Photos Video" frameborder="0" allowfullscreen></iframe>
+          <p>Favorite Motivation Video</p>
+        </div>
+        <div class="media-item">
+          <audio controls>
+            <source src="Yo-Yo Ma - Bach_ Cello Suite No. 1 in G Major, Prélude (Official Video).mp3" type="audio/mpeg" />
+            Your browser does not support the audio element.
+          </audio>
+          <p>Background Music</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Part 3: Feedback Form -->
+    <section class="form-section">
+      <h2>Leave Feedback</h2>
+      <form action="/submit" method="POST">
+        <fieldset>
+          <legend>Your Info</legend>
+
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required />
+
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+
+          <label for="color">Favorite Color:</label>
+          <input type="color" id="color" name="color" />
+        </fieldset>
+
+        <fieldset>
+          <legend>Rating</legend>
+          <label><input type="radio" name="rating" value="1" required /> 1</label>
+          <label><input type="radio" name="rating" value="2" /> 2</label>
+          <label><input type="radio" name="rating" value="3" /> 3</label>
+          <label><input type="radio" name="rating" value="4" /> 4</label>
+          <label><input type="radio" name="rating" value="5" /> 5</label>
+        </fieldset>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4"></textarea>
+
+        <label><input type="checkbox" name="subscribe" /> Join mailing list</label>
+
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+
+  </main>
+</body>
+</html>

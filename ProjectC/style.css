@@ -1,0 +1,144 @@
+/* General Styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  color: #333;
+}
+
+h2 {
+  text-align: center;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+  padding: 20px;
+}
+
+.profile-table,
+.profile-table th,
+.profile-table td {
+  border: 1px solid #444;
+  border-collapse: collapse;
+}
+
+.profile-table {
+  width: 100%;
+  background: white;
+}
+
+.profile-table caption {
+  font-weight: bold;
+  padding: 8px;
+}
+
+.profile-table td,
+.profile-table th {
+  padding: 10px;
+}
+
+.profile-table tr:hover {
+  background-color: #eef;
+}
+
+.profile-pic {
+  width: 100px;
+  border-radius: 10px;
+}
+
+/* Flexbox Media Section */
+.media-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.media-item {
+  flex: 1 1 250px;
+  text-align: center;
+}
+
+/* Form Styling */
+form {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+fieldset {
+  margin-bottom: 15px;
+  border: 1px solid #aaa;
+  padding: 10px;
+}
+
+legend {
+  font-weight: bold;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+input,
+textarea,
+button {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 4px;
+  border: 1px solid #aaa;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  width: auto;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* Positioning Example */
+.profile-section {
+  position: relative;
+}
+
+.profile-section::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 30px;
+  height: 30px;
+  background: red;
+  border-radius: 50%;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+
+  .media-flex {
+    flex-direction: column;
+    align-items: center;
+  }
+}
