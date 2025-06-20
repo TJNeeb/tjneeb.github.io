@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter 08 - Project 01</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet" />
+
+  <script>
+    const cart = [
+      {
+        product: { title: "Portrait of Marten Soolmans", filename: "105070.jpg", price: 75.0 },
+        quantity: 3
+      },
+      {
+        product: { title: "View of Houses in Delft", filename: "106060.jpg", price: 125.0 },
+        quantity: 1
+      },
+      {
+        product: { title: "Woman Reading a Letter", filename: "106050.jpg", price: 100.0 },
+        quantity: 2
+      }
+    ];
+
+    function calculateTotal(quantity, price) {
+      return quantity * price;
+    }
+
+    function outputCartRow(item, total) {
+      document.write("<tr>");
+      document.write(`<td><img src="${item.product.filename}" width="140"></td>`);
+      document.write(`<td>${item.product.title}</td>`);
+      document.write(`<td class="center">${item.quantity}</td>`);
+      document.write(`<td class="right">$${item.product.price.toFixed(2)}</td>`);
+      document.write(`<td class="right">$${total.toFixed(2)}</td>`);
+      document.write("</tr>");
+    }
+
+    // Prompt user for values
+    const tax_rate = prompt('Enter tax rate (e.g., 0.10)');
+    const shipping_threshold = prompt('Enter shipping threshold (e.g., 1000)');
+
+    // Safely parse input
+    const taxRate = isNaN(parseFloat(tax_rate)) ? 0 : parseFloat(tax_rate);
+    const shippingThreshold = isNaN(parseFloat(shipping_threshold)) ? 0 : parseFloat(shipping_threshold);
+  </script>
+</head>
+
+<body>
+  <table class="table-fill">
+    <thead>
+      <tr>
+        <th colspan="2">Product</th>
+        <th>#</th>
+        <th>Price</th>
+        <th>Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <script>
+        let subtotal = 0;
+
+        for (let i = 0; i < cart.length; i++) {
+          const item = cart[i];
+          const total = calculateTotal(item.quantity, item.product.price);
+          subtotal += total;
+          outputCartRow(item, total);
+        }
+
+        // Calculate shipping
+        const shippingCost = subtotal > shippingThreshold ? 0 : 40;
+        const tax = subtotal * taxRate;
+        const grandTotal = subtotal + tax + shippingCost;
+
+        // Log for debugging (optional)
+        console.log("Subtotal:", subtotal);
+        console.log("Shipping Threshold:", shippingThreshold);
+        console.log("Shipping Cost:", shippingCost);
+
+        // Output totals
+        document.write(`<tr class="totals"><td colspan="4">Subtotal</td><td class="right">$${subtotal.toFixed(2)}</td></tr>`);
+        document.write(`<tr class="totals"><td colspan="4">Tax</td><td class="right">$${tax.toFixed(2)}</td></tr>`);
+        document.write(`<tr class="totals"><td colspan="4">Shipping</td><td class="right">$${shippingCost.toFixed(2)}</td></tr>`);
+        document.write(`<tr class="totals"><td colspan="4" class="focus">Grand Total</td><td class="right focus">$${grandTotal.toFixed(2)}</td></tr>`);
+      </script>
+    </tbody>
+  </table>
+</body>
+</html>
