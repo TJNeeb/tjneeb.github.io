@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8"/>  
+    <title>Lab 9</title>   
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">  
+    <link rel="stylesheet" href="ch09-proj01.css">
+    
+</head>
+<body>
+
+
+<h1>Project 1</h1>
+<main>
+   <aside></aside>
+   <section>
+      <video id="vidPlayer" >
+         <source src="Nature-8399.mp4" />
+      </video>
+   
+      <div id="controls">
+        <div id="progress">
+         <div id="progressFilled"></div>
+        </div>
+        <button data-skip="-5" >⯇⯇</button>
+        <button id="play" title="Toggle Play">⯈</button>        
+        <button data-skip="5" >⯈⯈</button>
+        <button id="stop">◼</button>
+         🕨
+         <input type="range" id="volume" min="0" max="1" step="0.05" value="1"> 
+        🕪
+   
+      </div>
+   </section>
+
+</main>
+   
+</body>
+
+<script>
+const symbolPlay = '⯈';
+const symbolPause = '❚ ❚';
+const files = ['Nature-8399','River-655','Waterfall-941','Wave-2737'];
+
+const aside = document.querySelector('aside');
+const video = document.getElementById('vidPlayer');
+const source = video.querySelector('source');
+const playButton = document.getElementById('play');
+const stopButton = document.getElementById('stop');
+const progressFilled = document.getElementById('progressFilled');
+
+// Create clickable thumbnails
+files.forEach(file => {
+  const img = document.createElement('img');
+  img.src = `${file}.jpg`;
+  img.alt = file;
+  img.style.cursor = 'pointer';
+  img.addEventListener('click', () => {
+    source.src = `${file}.mp4`;
+    video.load();
+    video.play();
+    playButton.textContent = symbolPause;
+  });
+  aside.appendChild(img);
+});
+
+stopButton.addEventListener('click', () => {
+  video.pause();
+  video.currentTime = 0;
+  playButton.textContent = symbolPlay;
+  progressFilled.style.flexBasis = '0%';
+});
+
+const skipButtons = document.querySelectorAll('[data-skip]');
+skipButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    video.currentTime += parseFloat(button.dataset.skip);
+  });
+});
+
+playButton.addEventListener('click', () => {
+  if (video.paused) {
+    video.play();
+    playButton.textContent = symbolPause;
+  } else {
+    video.pause();
+    playButton.textContent = symbolPlay;
+  }
+});
+
+video.addEventListener('timeupdate', () => {
+  const percent = (video.currentTime / video.duration) * 100;
+  progressFilled.style.flexBasis = `${percent}%`;
+});
+
+const volumeSlider = document.getElementById('volume');
+volumeSlider.addEventListener('input', () => {
+  video.volume = volumeSlider.value;
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
